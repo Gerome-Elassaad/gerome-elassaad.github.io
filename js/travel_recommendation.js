@@ -1,12 +1,20 @@
 document.getElementById('search-button').addEventListener('click', async () => {
   const query = document.getElementById('search-bar').value.toLowerCase().trim();
 
+  // Clear the results before displaying new ones
+  const resultsContainer = document.getElementById('results');
+  resultsContainer.innerHTML = '';
+
+  if (!query) {
+    resultsContainer.innerHTML = '<p>Please enter a search term.</p>';
+    return;
+  }
+
   try {
     const response = await fetch('travel_recommendation_api.json');
     if (!response.ok) throw new Error('Failed to fetch data.');
 
     const data = await response.json();
-    console.log('Fetched data:', data);
 
     let results = [];
     if (query.includes('beach')) {
@@ -14,10 +22,11 @@ document.getElementById('search-button').addEventListener('click', async () => {
     } else if (query.includes('temple')) {
       results = data.temples;
     } else {
-      results = data.countries.flatMap(country => country.cities);
+      results = data.countries.flatMap(country =>
+        country.cities.filter(city => city.name.toLowerCase().includes(query))
+      );
     }
 
-    const resultsContainer = document.getElementById('results');
     if (results.length > 0) {
       resultsContainer.innerHTML = results.map(item => `
         <div class="result-card">
@@ -31,6 +40,11 @@ document.getElementById('search-button').addEventListener('click', async () => {
     }
   } catch (error) {
     console.error('Error:', error);
-    document.getElementById('results').innerHTML = '<p>Failed to load results. Please try again later.</p>';
+    resultsContainer.innerHTML = '<p>Failed to load results. Please try again later.</p>';
   }
+});
+
+document.getElementById('clear-button').addEventListener('click', () => {
+  document.getElementById('search-bar').value = '';
+  document.getElementById('results').innerHTML = '';
 });
