@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - TravelBloom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden; /* Prevent scrolling */
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #0d1117; /* GitHub dark theme background */
+      color: white; /* White text color */
+      padding: 10px 20px;
+    }
+
+    nav ul li a {
+      color: white; /* Ensure navigation links are white */
+    }
+
+    .logo img {
+      filter: brightness(0) invert(1); /* Invert logo for dark backgrounds */
+    }
+
+
+    main {
+      flex-grow: 1; /* Fill the remaining space */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    section {
+      width: 100%;
+      height: 100vh; /* Full viewport height */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-size: cover;
+      background-position: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin-right: 20px;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    #contact {
+      background: url('./contact-background.jpg') no-repeat center center/cover;
+      position: relative;
+    }
+
+    #contact::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #5e5e5e80; /* Teal overlay */
+      z-index: -1;
+    }
+
+    #contact h1 {
+      color: white;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    #contact form {
+      max-width: 500px;
+      width: 100%; /* Full width within container */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #contact input, #contact textarea {
+      width: 100%; /* Full width of form */
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid white;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    #contact textarea {
+      resize: none; /* Disable resizing */
+      height: 100px; /* Fixed height */
+    }
+
+    #contact button {
+      background-color: teal;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 20px;
+      font-size: 16px;
+    }
+
+    #contact button:hover {
+      background-color: #009999;
+    }
+
+    footer {
+      background-color: rgba(0, 128, 128, 0.8);
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="images/logo.png" alt="TravelBloom Logo">
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="contact">
+      <h1>Contact Us</h1>
+      <form id="contact-form">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 TravelBloom. All rights reserved.</p>
+  </footer>
+  <script src="js/travel_recommendation.js"></script>
+</body>
+</html>
